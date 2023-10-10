@@ -1,0 +1,8 @@
+
+<resources>
+    <string name="app_name">TwoCatsAmigurumi</string>
+    <string name="tv_cargando">Cargando contenido</string>
+    <string name="efab_text_create">MÁS</string>
+    <string name="Product_empty_cart">Carrito vacío</string>
+    <string name="product_preview_cart">Ver carrito</string>
+</resources>
