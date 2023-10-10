@@ -5,4 +5,11 @@
     <string name="efab_text_create">MÁS</string>
     <string name="Product_empty_cart">Carrito vacío</string>
     <string name="product_preview_cart">Ver carrito</string>
+    <string name="mssg_bienvenida">Bienvenido a 2CatsAmigurumi</string>
+    <string name="mssg_despedida">Hasta pronto!</string>
+    <string name="mssg_error_no_network">Problemas de conexión</string>
+    <string name="mssg_error_codigo_error">Error. Inténtelo más tarde.</string>
+    <string name="menu_title_sign_out">Cerrar Sesión</string>
+    <string name="mssg_sign_out_success">Hasta pronto!</string>
+    <string name="mssg_sign_out_failure">Error al cerrar la sesión</string>
 </resources>
