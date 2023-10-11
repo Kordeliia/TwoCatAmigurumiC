@@ -12,6 +12,7 @@ import com.example.twocatsamigurumi.Constants
 import com.example.twocatsamigurumi.R
 import com.example.twocatsamigurumi.cart.CartFragment
 import com.example.twocatsamigurumi.databinding.ActivityMainBinding
+import com.example.twocatsamigurumi.detail.DetailFragment
 import com.example.twocatsamigurumi.entities.Product
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
@@ -22,6 +23,12 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
 class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
+    private lateinit var binding : ActivityMainBinding
+    private lateinit var firebaseAuth : FirebaseAuth
+    private lateinit var authStateListener : FirebaseAuth.AuthStateListener
+    private lateinit var adapter : ProductAdapter
+    private lateinit var firestoreListener : ListenerRegistration
+    private var productSelected : Product? = null
     private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ it ->
         val response = IdpResponse.fromResultIntent(it.data)
         if(it.resultCode == RESULT_OK){
@@ -52,11 +59,7 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
             }
         }
     }
-    private lateinit var binding : ActivityMainBinding
-    private lateinit var firebaseAuth : FirebaseAuth
-    private lateinit var authStateListener : FirebaseAuth.AuthStateListener
-    private lateinit var adapter : ProductAdapter
-    private lateinit var firestoreListener : ListenerRegistration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -169,7 +172,11 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
     }
 
     override fun onClick(product: Product) {
-        TODO("Not yet implemented")
+        productSelected = product
+        val fragment = DetailFragment()
+        supportFragmentManager.beginTransaction().add(R.id.containerMain, fragment)
+            .addToBackStack(null).commit()
+        showButton(false)
     }
 
     override fun getProductsCart(): MutableList<Product> {
@@ -180,6 +187,11 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
             productCartList.add(product)
         }
         return productCartList
+    }
+
+    override fun getProductSelected(): Product? = productSelected
+    override fun showButton(isVisible: Boolean) {
+        binding.mBtnCart.visibility = if(isVisible) View.VISIBLE else View.GONE
     }
 
 }

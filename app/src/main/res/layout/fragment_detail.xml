@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/colorPrimary"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <ImageView
@@ -24,11 +25,84 @@
         app:layout_constraintTop_toBottomOf="@+id/imgProduct"
         android:layout_marginTop="@dimen/common_padding_default"
         android:layout_marginHorizontal="@dimen/common_padding_default"/>
+    <LinearLayout
+        android:id="@+id/llQuantityTotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="100"
+        app:layout_constraintBottom_toTopOf="@+id/llQuantity"
+        app:layout_constraintStart_toStartOf="@id/tvName"
+        app:layout_constraintEnd_toEndOf="@id/tvName"
+        android:orientation="horizontal">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvQuantityA"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:gravity="start"
+            android:layout_margin="@dimen/common_padding_min"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+            android:text= "@string/text_test_avaiables"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTotal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:layout_margin="@dimen/common_padding_min"
+            android:gravity="end"
+            android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+            android:text= "@string/text_test_total"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/common_padding_default"
+        android:gravity="center"
+        android:padding="@dimen/common_padding_min"
+        app:layout_constraintStart_toStartOf="@+id/tvName"
+        app:layout_constraintEnd_toEndOf="@+id/tvName"
+        app:layout_constraintBottom_toTopOf="@+id/efab_cart">
+        <ImageButton
+            android:id="@+id/ibRem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_remove_circle"
+            android:background="?attr/selectableItemBackground"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilQuantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/common_padding_min"
+            android:layout_marginEnd="@dimen/common_padding_min">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="3"
+                android:textAlignment="center"
+                android:inputType="number"
+                android:imeOptions="actionDone"
+                tools:text="5"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <ImageButton
+            android:id="@+id/ibSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_circle"
+            app:layout_constraintStart_toEndOf="@id/tilQuantity"
+            android:background="?attr/selectableItemBackground"
+            />
+    </LinearLayout>
     <androidx.core.widget.NestedScrollView
         android:layout_width="@dimen/padding_none"
         android:layout_height="@dimen/padding_none"
         app:layout_constraintTop_toBottomOf="@id/tvName"
-        app:layout_constraintBottom_toTopOf="@id/efab_cart"
+        app:layout_constraintBottom_toTopOf="@id/llQuantityTotal"
         app:layout_constraintStart_toStartOf="@id/tvName"
         app:layout_constraintEnd_toEndOf="@id/tvName">
         <com.google.android.material.textview.MaterialTextView
