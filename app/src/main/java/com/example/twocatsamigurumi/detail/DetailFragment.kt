@@ -30,6 +30,37 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getProduct()
+        setupButtons()
+    }
+
+    private fun setupButtons() {
+        product?.let{product ->
+            binding?.let{binding->
+                binding.ibRem.setOnClickListener{
+                    if(product.newQuantity > 1){
+                        product.newQuantity -= 1
+                        setNewQuantity(product)
+                    }
+                }
+                binding.ibSum.setOnClickListener{
+                    if(product.newQuantity < product.quantity){
+                        product.newQuantity += 1
+                        setNewQuantity(product)
+                    }
+                }
+                binding.efabCart.setOnClickListener {
+                    product.newQuantity = binding.etQuantity.text.toString().toInt()
+                    addToCart(product)
+                }
+            }
+        }
+    }
+
+    private fun addToCart(product: Product) {
+        (activity as? MainAux)?.let{
+            it.addProductToCart(product)
+            activity?.onBackPressed()
+        }
     }
 
     private fun getProduct() {
@@ -38,12 +69,21 @@ class DetailFragment : Fragment() {
             binding?.let{
                 it.tvName.text = product.name
                 it.tvDescription.text = product.description
-                it.tvQuantityA.text = product.quantity.toString()
+                it.tvQuantityA.text = getString(R.string.text_test_avaiables, product.quantity)
+                setNewQuantity(product)
                 Glide.with(this).load(product.imgUrl)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .placeholder(R.drawable.ic_time)
                     .centerCrop().into(it.imgProduct)
             }
+        }
+    }
+
+    private fun setNewQuantity(product: Product) {
+        binding?.let{
+            it.etQuantity.setText(product.newQuantity.toString())
+            it.tvTotal.text = getString(R.string.text_test_total,
+                product.totalPrice(), product.newQuantity, product.price)
         }
     }
 

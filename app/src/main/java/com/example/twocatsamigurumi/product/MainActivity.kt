@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
     private lateinit var adapter : ProductAdapter
     private lateinit var firestoreListener : ListenerRegistration
     private var productSelected : Product? = null
+    private val productCartList = mutableListOf<Product>()
     private val resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ it ->
         val response = IdpResponse.fromResultIntent(it.data)
         if(it.resultCode == RESULT_OK){
@@ -172,26 +173,34 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
     }
 
     override fun onClick(product: Product) {
-        productSelected = product
+        val index = productCartList.indexOf(product)
+        if(index != -1){
+            productSelected = productCartList[index]
+        } else {
+            productSelected = product
+        }
+
         val fragment = DetailFragment()
         supportFragmentManager.beginTransaction().add(R.id.containerMain, fragment)
             .addToBackStack(null).commit()
         showButton(false)
     }
 
-    override fun getProductsCart(): MutableList<Product> {
-        val productCartList = mutableListOf<Product>()
-        (1..7).forEach {
-            val product = Product(it.toString(), "Producto $it",
-                "This producto is $it", "", it, 2.0*it)
-            productCartList.add(product)
-        }
-        return productCartList
-    }
+    override fun getProductsCart(): MutableList<Product> = productCartList
+
 
     override fun getProductSelected(): Product? = productSelected
     override fun showButton(isVisible: Boolean) {
         binding.mBtnCart.visibility = if(isVisible) View.VISIBLE else View.GONE
+    }
+
+    override fun addProductToCart(product: Product) {
+        val index = productCartList.indexOf(product)
+        if(index != -1){
+            productCartList.set(index, product)
+        } else {
+            productCartList.add(product)
+        }
     }
 
 }

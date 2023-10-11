@@ -17,6 +17,8 @@
     <string name="efab_pay">PAGAR</string>
     <string name="cart_name_add_cart">AÑADIR AL CARRITO</string>
     <string name="cart_description_text">Descrición del producto</string>
-    <string name="text_test_avaiables">Disponibles: 5</string>
-    <string name="text_test_total">Total: 345€</string>
+    <string name="text_test_avaiables">Disponibles: %1$d</string>
+    <string name="text_test_total">Total: %1$.2f€  (%2$d x %3$.2f€)</string>
+    <string name="ib_description_remove">Quitar productos del carrito</string>
+    <string name="ib_description_add">Añadir cantidad de productos al carrito</string>
 </resources>

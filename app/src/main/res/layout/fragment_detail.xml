@@ -38,7 +38,7 @@
             android:id="@+id/tvQuantityA"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="50"
+            android:layout_weight="70"
             android:gravity="start"
             android:layout_margin="@dimen/common_padding_min"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
@@ -47,7 +47,7 @@
             android:id="@+id/tvTotal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="50"
+            android:layout_weight="30"
             android:layout_margin="@dimen/common_padding_min"
             android:gravity="end"
             android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
@@ -68,16 +68,17 @@
         app:layout_constraintBottom_toTopOf="@+id/efab_cart">
         <ImageButton
             android:id="@+id/ibRem"
+            android:contentDescription="@string/ib_description_remove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_remove_circle"
+            android:src="@drawable/ic_add_circle"
             android:background="?attr/selectableItemBackground"
             />
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/common_padding_min"
+            android:layout_marginStart="@dimen/common_padding_default"
             android:layout_marginEnd="@dimen/common_padding_min">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etQuantity"
@@ -91,6 +92,7 @@
         </com.google.android.material.textfield.TextInputLayout>
         <ImageButton
             android:id="@+id/ibSum"
+            android:contentDescription="@string/ib_description_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_add_circle"
