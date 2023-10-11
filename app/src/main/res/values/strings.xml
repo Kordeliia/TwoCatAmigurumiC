@@ -13,4 +13,6 @@
     <string name="mssg_sign_out_success">Hasta pronto!</string>
     <string name="mssg_sign_out_failure">Error al cerrar la sesión</string>
     <string name="mssg_error_consultar_datos">Error al consultar los datos en la base de datos.</string>
+    <string name="cart_buy_name">Carrito de compra</string>
+    <string name="efab_pay">PAGAR</string>
 </resources>

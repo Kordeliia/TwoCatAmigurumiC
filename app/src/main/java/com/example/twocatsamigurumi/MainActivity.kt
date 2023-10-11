@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.twocatsamigurumi.cart.CartFragment
 import com.example.twocatsamigurumi.databinding.ActivityMainBinding
 import com.example.twocatsamigurumi.entities.Product
 import com.example.twocatsamigurumi.product.OnProductListener
@@ -62,7 +63,11 @@ class MainActivity : AppCompatActivity(),OnProductListener {
         setContentView(binding.root)
         configAuth()
         configRecyclerView()
+        configButtons()
     }
+
+
+
     private fun configRecyclerView() {
         adapter = ProductAdapter(mutableListOf(), this)
         binding.recyclerView.apply{
@@ -72,6 +77,13 @@ class MainActivity : AppCompatActivity(),OnProductListener {
                 GridLayoutManager.HORIZONTAL,
                 false)
             adapter = this@MainActivity.adapter
+        }
+    }
+
+    private fun configButtons() {
+        binding.mBtnCart.setOnClickListener{
+            val fragment = CartFragment()
+            fragment.show(supportFragmentManager.beginTransaction(), CartFragment::class.java.simpleName)
         }
     }
     private fun configAuth(){

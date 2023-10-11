@@ -42,6 +42,24 @@
         android:id="@+id/imgProduct"
         android:layout_width="@dimen/product_cart_img_size"
         android:layout_height="@dimen/product_cart_img_size"
+        android:background="@color/blue_dark"
+        app:layout_constraintTop_toTopOf="@+id/ibRem"
+        app:layout_constraintBottom_toBottomOf="@+id/ibRem"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/common_padding_min"
+        />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvName"
+        android:layout_width="@dimen/padding_none"
+        android:layout_height="wrap_content"
+        android:textAppearance="?attr/textAppearanceSubtitle1"
+        tools:text="Producto 1"
+        android:maxLines="2"
+        app:layout_constraintTop_toTopOf="@+id/imgProduct"
+        app:layout_constraintBottom_toBottomOf="@+id/imgProduct"
+        app:layout_constraintStart_toEndOf="@+id/imgProduct"
+        app:layout_constraintEnd_toStartOf="@+id/ibRem"
+        android:layout_marginHorizontal="@dimen/common_padding_min"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
