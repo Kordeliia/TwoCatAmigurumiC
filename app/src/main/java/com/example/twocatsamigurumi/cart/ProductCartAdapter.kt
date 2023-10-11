@@ -15,13 +15,22 @@ class ProductCartAdapter (private val productList : MutableList<Product>,
                           private val listener : OnCartListener) :
     RecyclerView.Adapter<ProductCartAdapter.ViewHolder>() {
     private lateinit var context : Context
+    private fun calcTotal(){
+        var result = 0.0
+        for(product in productList){
+            result += product.totalPrice()
+        }
+        listener.showTotal(result)
+    }
     inner class ViewHolder (view : View) : RecyclerView.ViewHolder(view){
         val binding = ItemProductCartBinding.bind(view)
         fun setListener(product: Product){
             binding.ibSum.setOnClickListener {
+                product.newQuantity += 1
                 listener.setQuantity(product)
             }
             binding.ibRem.setOnClickListener {
+                product.newQuantity -= 1
                 listener.setQuantity(product)
             }
         }
@@ -52,6 +61,7 @@ class ProductCartAdapter (private val productList : MutableList<Product>,
         if(!productList.contains(product)){
             productList.add(product)
             notifyItemInserted(productList.size - 1)
+            calcTotal()
         } else {
             updateProduct(product)
         }
@@ -61,6 +71,7 @@ class ProductCartAdapter (private val productList : MutableList<Product>,
         if(!productList.contains(product)){
             productList.removeAt(index)
             notifyItemRemoved(index)
+            calcTotal()
         }
     }
     fun updateProduct(product: Product){
@@ -68,6 +79,7 @@ class ProductCartAdapter (private val productList : MutableList<Product>,
         if(index != -1){
             productList.set(index, product)
             notifyItemChanged(index)
+            calcTotal()
         }
     }
 }

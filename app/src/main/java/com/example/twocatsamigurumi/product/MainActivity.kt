@@ -187,6 +187,23 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
     }
 
     override fun getProductsCart(): MutableList<Product> = productCartList
+    override fun updateTotal() {
+        var total = 0.0
+        productCartList.forEach { product ->
+            total += product.totalPrice()
+        }
+        if(total == 0.0){
+            binding.tvTotal.text = getString(R.string.Product_empty_cart)
+        } else {
+            binding.tvTotal.text = getString(R.string.product_full_cart, total)
+        }
+    }
+
+    override fun clearCart() {
+        productCartList.clear()
+        updateTotal()
+
+    }
 
 
     override fun getProductSelected(): Product? = productSelected
@@ -201,6 +218,7 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
         } else {
             productCartList.add(product)
         }
+        updateTotal()
     }
 
 }
