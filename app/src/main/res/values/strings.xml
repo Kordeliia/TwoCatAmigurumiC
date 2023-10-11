@@ -12,4 +12,5 @@
     <string name="menu_title_sign_out">Cerrar Sesión</string>
     <string name="mssg_sign_out_success">Hasta pronto!</string>
     <string name="mssg_sign_out_failure">Error al cerrar la sesión</string>
+    <string name="mssg_error_consultar_datos">Error al consultar los datos en la base de datos.</string>
 </resources>

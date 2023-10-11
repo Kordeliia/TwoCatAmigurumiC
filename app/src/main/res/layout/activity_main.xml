@@ -28,7 +28,6 @@
         app:layout_constraintTop_toTopOf="@+id/tvTotal"
         android:layout_marginEnd="@dimen/common_padding_normal"
         android:layout_marginStart="@dimen/common_padding_min"
-        android:theme="@drawable/shapes"
         />
 
 
