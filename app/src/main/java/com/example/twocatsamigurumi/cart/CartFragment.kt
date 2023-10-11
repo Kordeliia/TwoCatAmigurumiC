@@ -7,6 +7,7 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.twocatsamigurumi.databinding.FragmentCartBinding
 import com.example.twocatsamigurumi.entities.Product
+import com.example.twocatsamigurumi.product.MainAux
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -24,6 +25,7 @@ class CartFragment : BottomSheetDialogFragment(), OnCartListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             setupRecyclerView()
             setupButtons()
+            getProducts()
             return bottomSheetDialog
         }
         return super.onCreateDialog(savedInstanceState)
@@ -36,6 +38,11 @@ class CartFragment : BottomSheetDialogFragment(), OnCartListener {
             }
         }
     }
+    private fun getProducts(){
+        (activity as? MainAux)?.getProductsCart()?.forEach {
+            adapter.addProduct(it)
+        }
+    }
 
     private fun setupRecyclerView() {
         binding?.let {
@@ -44,11 +51,11 @@ class CartFragment : BottomSheetDialogFragment(), OnCartListener {
                 layoutManager = LinearLayoutManager(context)
                 adapter = this@CartFragment.adapter
             }
-            (1..5).forEach {
+           /* (1..5).forEach {
                 val product = Product(it.toString(), "Producto $it",
                     "This producto is $it", "", it, 2.0*it)
                 adapter.addProduct(product)
-            }
+            }*/
         }
     }
 

@@ -15,4 +15,6 @@
     <string name="mssg_error_consultar_datos">Error al consultar los datos en la base de datos.</string>
     <string name="cart_buy_name">Carrito de compra</string>
     <string name="efab_pay">PAGAR</string>
+    <string name="cart_name_add_cart">AÑADIR AL CARRITO</string>
+    <string name="cart_description_text">Descrición del producto</string>
 </resources>

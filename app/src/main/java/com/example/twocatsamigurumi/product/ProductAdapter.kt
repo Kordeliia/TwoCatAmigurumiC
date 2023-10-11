@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.twocatsamigurumi.MainActivity
 import com.example.twocatsamigurumi.R
 import com.example.twocatsamigurumi.databinding.ItemProductBinding
 import com.example.twocatsamigurumi.entities.Product
