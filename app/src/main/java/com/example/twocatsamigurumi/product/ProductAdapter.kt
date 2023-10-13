@@ -20,7 +20,7 @@ class ProductAdapter(private val productList: MutableList<Product>,
     inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val binding = ItemProductBinding.bind(view)
         fun setListener(product: Product){
-            binding.root.setOnClickListener {
+            binding.mbBuy.setOnClickListener {
                 listener.onClick(product)
             }
         }

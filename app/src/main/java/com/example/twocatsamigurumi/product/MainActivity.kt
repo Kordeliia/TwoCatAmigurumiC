@@ -22,6 +22,8 @@ import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
+
+
 class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
     private lateinit var binding : ActivityMainBinding
     private lateinit var firebaseAuth : FirebaseAuth
@@ -171,6 +173,7 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
             }
         }
     }
+
 
     override fun onClick(product: Product) {
         val index = productCartList.indexOf(product)

@@ -6,4 +6,5 @@
     <dimen name="padding_none">0dp</dimen>
     <dimen name="common_padding_default">16dp</dimen>
     <dimen name="product_cart_img_size">48dp</dimen>
+    <dimen name="stroke_car_dim">2dp</dimen>
 </resources>

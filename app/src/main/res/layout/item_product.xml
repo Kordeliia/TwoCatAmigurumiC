@@ -2,12 +2,17 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:backgroundTint="@color/blue_dark"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="@dimen/common_padding_min">
+    android:layout_margin="@dimen/common_padding_min"
+    android:elevation="@dimen/common_padding_default"
+    app:strokeColor="@color/blue_dark"
+    app:strokeWidth="@dimen/stroke_car_dim">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue_light">
         <ImageView
             android:id="@+id/imgProduct"
             android:layout_width="@dimen/product_img_width"
@@ -19,35 +24,73 @@
             app:layout_constraintDimensionRatio="1:1"
             />
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvQuantity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/common_padding_min"
-            tools:text="x10"
-            app:layout_constraintEnd_toEndOf="@id/imgProduct"
-            app:layout_constraintBottom_toBottomOf="@id/imgProduct"
-            />
-        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvName"
             android:layout_width="@dimen/padding_none"
+            android:backgroundTint="@color/blue_light"
             android:layout_height="wrap_content"
             android:padding="@dimen/common_padding_min"
+            android:textColor="@color/blue_light"
             tools:text="Nombre producto"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imgProduct"
             />
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvPrice"
+        <LinearLayout
+            android:id="@+id/llQandP"
             android:layout_width="@dimen/padding_none"
             android:layout_height="wrap_content"
-            android:padding="@dimen/common_padding_min"
-            tools:text="15€"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvName"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            android:orientation="horizontal">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvPrice"
+                android:layout_width="@dimen/padding_none"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:padding="@dimen/common_padding_min"
+                tools:text="15€"
+                android:textColor="@color/blue_light"
+                />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="50"
+                android:padding="@dimen/common_padding_min"
+                android:textAlignment="textEnd"
+                android:textColor="@color/blue_light"
+                tools:text="x10"
+                app:layout_constraintEnd_toEndOf="@id/imgProduct"
+                app:layout_constraintBottom_toBottomOf="@id/imgProduct"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="@dimen/padding_none"
+            android:layout_height="wrap_content"
+            android:weightSum="100"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llQandP"
+            app:layout_constraintBottom_toBottomOf="parent">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/mbBuy"
+                android:layout_width="@dimen/padding_none"
+                android:layout_height="match_parent"
+                android:layout_weight="90"
+                android:elevation="@dimen/common_padding_min"
+                android:layout_margin="@dimen/common_padding_min"
+                android:text="BUY"
+                app:strokeColor="@color/white"
+                app:strokeWidth="@dimen/stroke_car_dim"
+                android:textColor="@color/blue_dark"
+                app:icon="@drawable/ic_cart"
+                app:iconGravity="textEnd"
+                app:iconTint="@color/blue_dark"/>
+        </LinearLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

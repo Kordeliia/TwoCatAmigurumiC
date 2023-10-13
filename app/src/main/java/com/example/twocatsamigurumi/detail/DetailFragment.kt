@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -11,6 +12,7 @@ import com.example.twocatsamigurumi.R
 import com.example.twocatsamigurumi.databinding.FragmentDetailBinding
 import com.example.twocatsamigurumi.entities.Product
 import com.example.twocatsamigurumi.product.MainAux
+import kotlin.time.Duration.Companion.minutes
 
 class DetailFragment : Fragment() {
     private var binding : FragmentDetailBinding? = null
@@ -75,6 +77,7 @@ class DetailFragment : Fragment() {
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .placeholder(R.drawable.ic_time)
                     .centerCrop().into(it.imgProduct)
+
             }
         }
     }

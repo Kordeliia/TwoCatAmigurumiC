@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+        android:textColor="@color/blue_dark"
         android:gravity="center_vertical"
         android:layout_marginStart="@dimen/common_padding_default"
         android:layout_marginEnd="@dimen/common_padding_min"
@@ -24,6 +25,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/product_preview_cart"
+        android:backgroundTint="@color/blue_dark"
+        android:textColor="@color/blue_light"
+        app:strokeColor="@color/white"
+        app:strokeWidth="@dimen/stroke_car_dim"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@+id/tvTotal"
         app:layout_constraintTop_toTopOf="@+id/tvTotal"
@@ -66,7 +71,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_cargando"/>
+            android:text="@string/tv_cargando"
+            android:textColor="@color/blue_dark"/>
     </LinearLayout>
 
 

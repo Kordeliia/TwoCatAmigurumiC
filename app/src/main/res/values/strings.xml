@@ -1,4 +1,3 @@
-
 <resources>
     <string name="app_name">TwoCatsAmigurumi</string>
     <string name="tv_cargando">Cargando contenido</string>
@@ -22,4 +21,10 @@
     <string name="ib_description_remove">Quitar productos del carrito</string>
     <string name="ib_description_add">Añadir cantidad de productos al carrito</string>
     <string name="product_full_cart">Total: %1$.2f€</string>
+    <string name="btn_follow_package">SEGUIR ENVIO</string>
+    <string name="order_id">ID: %1$s</string>
+    <string name="order_status">Estado:</string>
+    <string name="order_ID">"ID: "</string>
+    <string name="order_products">Productos: Patrón Mariquita Lola, patrón zorrito, patrones ranitas</string>
+    <string name="order_price_total">Total: %1$.2f€</string>
 </resources>

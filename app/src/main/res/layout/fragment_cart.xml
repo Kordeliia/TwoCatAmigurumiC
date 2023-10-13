@@ -3,17 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:background="@color/blue_dark"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary">
+        android:background="@color/blue_light">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
+            android:backgroundTint="@color/blue_light"
             android:paddingHorizontal="@dimen/common_padding_default"
             android:gravity="center_vertical">
             <com.google.android.material.textview.MaterialTextView
@@ -21,8 +23,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="100"
                 android:text="@string/cart_buy_name"
-                android:textColor="?attr/colorOnPrimary"
-                android:textAppearance="?attr/textAppearanceHeadline6"/>
+                android:textColor="@color/blue_dark"
+                android:textAppearance="?attr/textAppearanceHeadline6" />
             <ImageButton
                 android:id="@+id/iBtnCloseCart"
                 android:layout_width="wrap_content"
@@ -41,9 +43,14 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/common_padding_default"
             android:text="@string/efab_pay"
-            app:icon="@drawable/iuc_pay"
+            app:icon="@drawable/ic_pay"
+            android:backgroundTint="@color/blue_light"
+            android:textColor="@color/blue_dark"
+            app:iconTint="@color/blue_dark"
             app:iconGravity="textEnd"
             android:gravity="center"
+            app:strokeColor="@color/white"
+            app:strokeWidth="@dimen/stroke_car_dim"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -58,12 +65,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/efab"
             android:textAlignment="textEnd"
+            android:textColor="@color/blue_light"
             android:layout_marginHorizontal="@dimen/common_padding_default"
             android:layout_marginBottom="@dimen/common_padding_default"/>
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="@dimen/padding_none"
+            android:backgroundTint="@color/blue_dark"
             tools:listitem="@layout/item_product_cart"
             tools:itemCount="5"
             app:layout_constraintHeight_default="wrap"
