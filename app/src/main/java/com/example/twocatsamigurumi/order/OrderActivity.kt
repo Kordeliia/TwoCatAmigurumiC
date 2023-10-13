@@ -8,6 +8,7 @@ import com.example.twocatsamigurumi.Constants
 import com.example.twocatsamigurumi.R
 import com.example.twocatsamigurumi.databinding.ActivityOrderBinding
 import com.example.twocatsamigurumi.entities.Order
+import com.example.twocatsamigurumi.track.TrackFragment
 import com.google.firebase.firestore.FirebaseFirestore
 
 class OrderActivity : AppCompatActivity(), OnOrderListener, OrderAux {
@@ -47,7 +48,12 @@ class OrderActivity : AppCompatActivity(), OnOrderListener, OrderAux {
     }
 
     override fun onTrack(order: Order) {
-        TODO("Not yet implemented")
+        orderSelected = order
+        var fragment = TrackFragment()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.containerMain, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onStartChat(order: Order) {

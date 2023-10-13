@@ -29,7 +29,7 @@
             android:id="@+id/tvID"
             android:layout_width="@dimen/padding_none"
             android:layout_height="wrap_content"
-            android:text="@string/order_ID"
+            android:text="@string/order_id"
             android:textColor="@color/blue_dark"
             android:layout_margin="@dimen/common_padding_default"
             android:textAppearance="?attr/textAppearanceSubtitle1"

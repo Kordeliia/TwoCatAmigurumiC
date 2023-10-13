@@ -13,6 +13,12 @@ class OrderAdapter (private val orderList : MutableList<Order>,
                     private val listener : OnOrderListener) :
     RecyclerView.Adapter<OrderAdapter.ViewHolder>(){
     private lateinit var context : Context
+    private val aValues : Array<String> by lazy {
+        context.resources.getStringArray(R.array.status_value)
+    }
+    private val aKeys : Array<Int> by lazy {
+        context.resources.getIntArray(R.array.status_key).toTypedArray()
+    }
     inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val binding = ItemOrderBinding.bind(view)
         fun setListener(order : Order) {
@@ -40,13 +46,20 @@ class OrderAdapter (private val orderList : MutableList<Order>,
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val order = orderList[position]
         holder.setListener(order)
-        holder.binding.tvID.text = context.getString(R.string.order_id, order.id).toString()
+        holder.binding.tvID.text = context.getString(R.string.order_id, order.id)
         var names =  ""
         order.products.forEach {
             names += "${it.value.name}, "
         }
-        holder.binding.tvProductNames.text = names.dropLast(2).toString()
-        holder.binding.tvTotalPrice.text = context.getString(R.string.product_full_cart, order.totalPrice).toString()
+        holder.binding.tvProductNames.text = names.dropLast(2)
+        holder.binding.tvTotalPrice.text = context.getString(R.string.product_full_cart,
+            order.totalPrice)
+        val index = aKeys.indexOf(order.status)
+        val statusString = if(index != -1) aValues[index]
+        else context.getString(R.string.order_status_error)
+        holder.binding.tvStatus.text =
+            context.getString(R.string.order_status, statusString)
+
 
     }
 }

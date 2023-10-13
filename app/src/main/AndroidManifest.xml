@@ -15,7 +15,8 @@
         tools:targetApi="tiramisu">
         <activity
             android:name=".order.OrderActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="@string/order_title"/>
         <activity
             android:name=".product.MainActivity"
             android:exported="true">

@@ -1,5 +1,6 @@
 package com.example.twocatsamigurumi.product
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -14,6 +15,7 @@ import com.example.twocatsamigurumi.cart.CartFragment
 import com.example.twocatsamigurumi.databinding.ActivityMainBinding
 import com.example.twocatsamigurumi.detail.DetailFragment
 import com.example.twocatsamigurumi.entities.Product
+import com.example.twocatsamigurumi.order.OrderActivity
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
@@ -149,6 +151,7 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
                         }
                     }
             }
+            R.id.action_order_history -> startActivity(Intent(this, OrderActivity::class.java))
         }
         return super.onOptionsItemSelected(item)
     }

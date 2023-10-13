@@ -23,11 +23,20 @@
     <string name="product_full_cart">Total: %1$.2f€</string>
     <string name="btn_follow_package">LOCALIZAR</string>
     <string name="order_id">ID: %1$s</string>
-    <string name="order_status">Estado:</string>
-    <string name="order_ID">"ID: "</string>
+    <string name="order_status">Estado: %1$s</string>
     <string name="order_products">Productos: Patrón Mariquita Lola, patrón zorrito, patrones ranitas</string>
     <string name="order_price_total">Total: %1$.2f€</string>
     <string name="chip_text_help">¿Necesitas ayuda?</string>
     <string name="toast_order_correct_done">Pedido realizado correctamente</string>
     <string name="toast_order_incorrect_done">No se ha podido realizar el pedido.</string>
+    <string name="order_status_ordered">¡Pedido realizado!</string>
+    <string name="order_status_preparing">Preparando su pedido...</string>
+    <string name="order_status_sent">¡Su pedido ha sido enviado!</string>
+    <string name="order_status_in_distribution">¡Su pedido está en reparto!</string>
+    <string name="order_status_delivered">¡Pedido entregado!</string>
+    <string name="order_status_error">Ha habido problemas con su pedido</string>
+    <string name="toast_error_consult_location">Error al consultar la localización</string>
+    <string name="order_title">Historial de compras</string>
+    <string name="track_title">Localización pedido</string>
+
 </resources>
