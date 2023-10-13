@@ -2,7 +2,7 @@ package com.example.twocatsamigurumi.entities
 
 import com.google.firebase.firestore.Exclude
 
-data class Order(@get: Exclude var id: String = "",
+data class Order(@get:Exclude var id: String = "",
                  var clientId : String= "",
                  var products : Map<String, ProductOrder> = hashMapOf(),
                  var totalPrice : Double = 0.0,

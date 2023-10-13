@@ -5,15 +5,21 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.twocatsamigurumi.Constants
 import com.example.twocatsamigurumi.R
 import com.example.twocatsamigurumi.databinding.FragmentCartBinding
+import com.example.twocatsamigurumi.entities.Order
 import com.example.twocatsamigurumi.entities.Product
+import com.example.twocatsamigurumi.entities.ProductOrder
 import com.example.twocatsamigurumi.order.OrderActivity
 import com.example.twocatsamigurumi.product.MainAux
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class CartFragment : BottomSheetDialogFragment(), OnCartListener {
     private var binding : FragmentCartBinding? = null
@@ -44,11 +50,42 @@ class CartFragment : BottomSheetDialogFragment(), OnCartListener {
             }
         }
     }
-
+    private fun enableUI(enable : Boolean){
+        binding?.let{
+            it.iBtnCloseCart.isEnabled = enable
+            it.efab.isEnabled = enable
+        }
+    }
     private fun requestOrder() {
-        dismiss()
-        (activity as? MainAux)?.clearCart()
-        startActivity(Intent(context, OrderActivity::class.java))
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let{myUser ->
+            enableUI(false)
+            val products = hashMapOf<String, ProductOrder>()
+            adapter.getProducts().forEach {product ->
+                products.put(product.id!!, ProductOrder(product.id!!, product.name!!, product.newQuantity))
+            }
+            val order = Order(clientId = myUser.uid, products = products, totalPrice = totalPrice, status = 1)
+            val db = FirebaseFirestore.getInstance()
+            db.collection(Constants.COLL_REQUESTS)
+                .add(order)
+                .addOnSuccessListener {
+                    dismiss()
+                    (activity as? MainAux)?.clearCart()
+                    startActivity(Intent(context, OrderActivity::class.java))
+                    Toast.makeText(activity,
+                        getString(R.string.toast_order_correct_done),
+                        Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(activity,
+                        getString(R.string.toast_order_incorrect_done),
+                        Toast.LENGTH_SHORT).show()
+                }
+                .addOnCompleteListener {
+                    enableUI(true)
+                }
+        }
+
     }
 
     private fun getProducts(){
