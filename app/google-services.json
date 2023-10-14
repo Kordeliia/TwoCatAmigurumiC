@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "931924165854",
+    "firebase_url": "https://twocatsamigurumipartner-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "twocatsamigurumipartner",
     "storage_bucket": "twocatsamigurumipartner.appspot.com"
   },
@@ -50,6 +51,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "931924165854-aqpk54jfnbah229d7bq2hghv4mnd9ms1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.twocatsamigurumi",
+            "certificate_hash": "6cf9d677368ea916821bff286f14d06735a06e75"
+          }
+        },
         {
           "client_id": "931924165854-2p8kt1shi9ejq5j9hbkhck1tn6tn6c6i.apps.googleusercontent.com",
           "client_type": 3

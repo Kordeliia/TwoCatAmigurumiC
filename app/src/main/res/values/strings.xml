@@ -38,5 +38,10 @@
     <string name="toast_error_consult_location">Error al consultar la localización</string>
     <string name="order_title">Historial de compras</string>
     <string name="track_title">Localización pedido</string>
+    <string name="text_input_layout_chat">Escribe tu mensaje</string>
+    <string name="snackbar_error_chat">Fallo al cargar el chat</string>
+    <string name="snackbar_error_borrar">El mensaje NO ha podido ser borrado</string>
+    <string name="snackbar_mensaje_borrado">Mensaje borrado correctamente</string>
+    <string name="chat_title">Soporte pedidos</string>
 
 </resources>

@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.twocatsamigurumi.Constants
 import com.example.twocatsamigurumi.R
+import com.example.twocatsamigurumi.chat.ChatFragment
 import com.example.twocatsamigurumi.databinding.ActivityOrderBinding
 import com.example.twocatsamigurumi.entities.Order
 import com.example.twocatsamigurumi.track.TrackFragment
@@ -57,7 +58,13 @@ class OrderActivity : AppCompatActivity(), OnOrderListener, OrderAux {
     }
 
     override fun onStartChat(order: Order) {
-        TODO("Not yet implemented")
+        orderSelected = order
+        val fragment = ChatFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .add(R.id.containerMain, fragment)
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun getOrderSelected(): Order = orderSelected
