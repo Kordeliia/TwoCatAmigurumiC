@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.example.twocatsamigurumi"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.twocatsamigurumi"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -42,9 +42,9 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation ("com.firebaseui:firebase-ui-auth:8.0.2")
     implementation(platform("com.google.firebase:firebase-bom:32.3.1"))
@@ -59,4 +59,7 @@ dependencies {
     implementation ("com.google.firebase:firebase-messaging")
     implementation ("com.google.firebase:firebase-analytics")
     implementation("androidx.preference:preference-ktx:1.2.1")
+
+    //Facebook login
+    implementation ("com.facebook.android:facebook-android-sdk:8.1.0")
 }

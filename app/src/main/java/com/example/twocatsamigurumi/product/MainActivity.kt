@@ -124,7 +124,8 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
             } else{
                 val providers = arrayListOf(
                     AuthUI.IdpConfig.EmailBuilder().build(),
-                    AuthUI.IdpConfig.GoogleBuilder().build())
+                    AuthUI.IdpConfig.GoogleBuilder().build(),
+                    AuthUI.IdpConfig.PhoneBuilder().build())
                 resultLauncher.launch(AuthUI
                     .getInstance()
                     .createSignInIntentBuilder()
