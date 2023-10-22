@@ -43,5 +43,7 @@
     <string name="snackbar_error_borrar">El mensaje NO ha podido ser borrado</string>
     <string name="snackbar_mensaje_borrado">Mensaje borrado correctamente</string>
     <string name="chat_title">Soporte pedidos</string>
+    <string name="notification_channel_id_default">general</string>
+    <string name="notification_channel_name_default">Generales</string>
 
 </resources>
