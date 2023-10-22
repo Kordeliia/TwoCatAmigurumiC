@@ -56,4 +56,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.google.firebase:firebase-database-ktx")
+    implementation ("com.google.firebase:firebase-messaging")
+    implementation ("com.google.firebase:firebase-analytics")
+    implementation("androidx.preference:preference-ktx:1.2.1")
 }

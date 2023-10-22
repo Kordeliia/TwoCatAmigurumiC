@@ -3,11 +3,14 @@ package com.example.twocatsamigurumi.product
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.edit
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.twocatsamigurumi.Constants
 import com.example.twocatsamigurumi.R
@@ -42,6 +45,26 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
                 Toast.makeText(this,
                     getString(R.string.mssg_bienvenida),
                     Toast.LENGTH_SHORT).show()
+                val preferences = PreferenceManager.getDefaultSharedPreferences(this)
+                val token = preferences.getString("token", null)
+                Log.i("abc", token.toString())
+
+                    val db = FirebaseFirestore.getInstance()
+                    val tokenMap = hashMapOf(Pair("token", token))
+                    db.collection(Constants.COLL_USERS)
+                        .document(user.uid)
+                        .collection(Constants.COLL_TOKENS)
+                        .add(tokenMap)
+                        .addOnSuccessListener {
+                            Log.i("abc", token.toString())
+                            preferences.edit{
+                                putString(Constants.PROP_TOKEN, null)
+                                    .apply()
+                            }
+                        }
+                        .addOnFailureListener {
+                            Log.i("abc", "error con los tokens")
+                        }
             }
         } else {
             if(response == null){
@@ -64,7 +87,6 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
             }
         }
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -73,8 +95,6 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
         configRecyclerView()
         configButtons()
     }
-
-
 
     private fun configRecyclerView() {
         adapter = ProductAdapter(mutableListOf(), this)
