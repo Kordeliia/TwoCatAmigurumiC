@@ -10,7 +10,9 @@ import com.example.twocatsamigurumi.chat.ChatFragment
 import com.example.twocatsamigurumi.databinding.ActivityOrderBinding
 import com.example.twocatsamigurumi.entities.Order
 import com.example.twocatsamigurumi.track.TrackFragment
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class OrderActivity : AppCompatActivity(), OnOrderListener, OrderAux {
     private lateinit var binding : ActivityOrderBinding
@@ -24,21 +26,26 @@ class OrderActivity : AppCompatActivity(), OnOrderListener, OrderAux {
         setupFirestore()
     }
     private fun setupFirestore(){
-        val db = FirebaseFirestore.getInstance()
-        db.collection(Constants.COLL_REQUESTS)
-            .get()
-            .addOnSuccessListener {
-                for(document in it){
-                    val order = document.toObject(Order::class.java)
-                    order.id = document.id
-                    adapter.add(order)
+        FirebaseAuth.getInstance().currentUser?.let{user ->
+            val db = FirebaseFirestore.getInstance()
+            db.collection(Constants.COLL_REQUESTS)
+                .whereEqualTo(Constants.PROP_CLIENT_ID, user.uid)
+                .orderBy(Constants.PROP_DATE, Query.Direction.DESCENDING)
+                .get()
+                .addOnSuccessListener {
+                    for(document in it){
+                        val order = document.toObject(Order::class.java)
+                        order.id = document.id
+                        adapter.add(order)
+                    }
                 }
-            }
-            .addOnFailureListener {
-                Toast.makeText(this,
-                    "Ha fallado conexión con Firestore",
-                    Toast.LENGTH_SHORT).show()
-            }
+                .addOnFailureListener {
+                    Toast.makeText(this,
+                        "Ha fallado conexión con Firestore",
+                        Toast.LENGTH_SHORT).show()
+                }
+        }
+
     }
     private fun setupRecyclerVIew() {
         adapter = OrderAdapter(mutableListOf(), this)

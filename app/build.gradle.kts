@@ -62,4 +62,5 @@ dependencies {
 
     //Facebook login
     implementation ("com.facebook.android:facebook-android-sdk:8.1.0")
+    implementation("com.facebook.android:facebook-login:8.1.0")
 }

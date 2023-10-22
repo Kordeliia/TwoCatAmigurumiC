@@ -7,4 +7,7 @@ object Constants {
     const val PROP_TOKEN = "token"
     const val COLL_USERS = "users"
     const val COLL_TOKENS = "tokens"
+    const val PROP_DATE = "date"
+    const val PROP_CLIENT_ID = "clientId"
+    const val PROP_STATUS = "status"
 }
