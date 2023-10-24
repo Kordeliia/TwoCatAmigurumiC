@@ -48,4 +48,12 @@
 
     <string name="facebook_application_id" translatable="false">1004485827449038</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fb1004485827449038</string>
+    <string name="pref_fcm_title">Recibir notificaciones</string>
+    <string name="pref_offers_key">pref_offers</string>
+    <string name="pref_title">Ofertas y promociones</string>
+    <string name="toast_notificaciones_active">Notificaciones activadas</string>
+    <string name="toast_notificaciones_not_active">Notificaciones desactivadas</string>
+    <string name="menu_title_settings">Settings</string>
+    <string name="settings_topic_offers">Topic_offers</string>
+
 </resources>

@@ -19,6 +19,8 @@ import com.example.twocatsamigurumi.databinding.ActivityMainBinding
 import com.example.twocatsamigurumi.detail.DetailFragment
 import com.example.twocatsamigurumi.entities.Product
 import com.example.twocatsamigurumi.order.OrderActivity
+import com.example.twocatsamigurumi.settings.SettingsActivity
+import com.example.twocatsamigurumi.settings.SettingsFragment
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
@@ -172,6 +174,9 @@ class MainActivity : AppCompatActivity(),OnProductListener, MainAux {
                                 Toast.LENGTH_SHORT).show()
                         }
                     }
+            }
+            R.id.action_settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
             }
             R.id.action_order_history -> startActivity(Intent(this, OrderActivity::class.java))
         }
